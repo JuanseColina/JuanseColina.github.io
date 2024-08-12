@@ -36,5 +36,14 @@
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
+    <script>
+      document.addEventListener('click', function(event) {
+        // Verifica si el clic fue en un enlace <a>
+        if(event.target.tagName === 'A' && event.target.href) {
+          event.preventDefault(); // Evita el comportamiento por defecto
+          window.open(event.target.href, '_blank'); // Abre el enlace en una nueva pestaña
+        }
+      });
+    </script>
   </body>
 </html>
