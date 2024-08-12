@@ -3,27 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | My Web Page</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        height: 1000vh;
-        width: 800vw;
-      }
-
-      #unity-canvas {
-        width: 100%;
-        height: 100%;
-        background: url('Build/myWebMay24.jpg') center / cover;
-      }
-    </style>
+    <title>Juanse Colina - Portfolio</title>
   </head>
-  <body>
-    <canvas id="unity-canvas" tabindex="-1"></canvas>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0; height:100vh">
+    <canvas id="unity-canvas" width="5090" height="1720" tabindex="-1" style="width: 100%; height: 100%; background: rgb(35, 31, 32); cursor: default;"></canvas>
     <script src="Build/myWebMay24.loader.js"></script>
     <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/myWebMay24.data",
         frameworkUrl: "Build/myWebMay24.framework.js",
@@ -32,8 +32,8 @@
         companyName: "DefaultCompany",
         productName: "My Web Page",
         productVersion: "0.1",
-        matchWebGLToCanvasSize: false, // Controla el tamaño del canvas y del contenido de WebGL por separado.
-        devicePixelRatio: 1 // Controla la relación de píxeles para dispositivos con pantallas de alta densidad.
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
   </body>
